@@ -63,7 +63,7 @@ class NetworkGraph(object):
 		rEdges = []
 		tG = NetworkGraph(len(self.nodes))
 		tG.addNodes(self.nodes)
-		for x in self.nodes:
+		for x in self.edges:
 			if tG.connectiveBetween(x[0], x[1]):
 				rEdges.append(x)
 			else:
