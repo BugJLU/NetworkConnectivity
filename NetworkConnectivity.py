@@ -1,27 +1,27 @@
 import matplotlib.pyplot as plt
 import networkx as nx
 import random
+from copy import copy
 
 
 class NetworkGraph(object):
-    def __init__(self, network_graph):
-        self.nodes = list(network_graph.nodes)
-        self.edges = list(network_graph.edges)
-        self.adjMat = [[j for j in i] for i in network_graph.adjMat]
-
-    def __init__(self, node_num):
-        self.adjMat = [[0]*node_num for i in range(node_num)]
-
-    def __init__(self):
-        self.nodes = []
+    def __init__(self, node_num=0):
+        self.nodes = list(range(node_num))
         self.edges = []
-        self.adjMat = [[]]
+        self.adjMat = [[0] * node_num for i in range(node_num)]
+
+    def __copy__(self):
+        result = NetworkGraph()
+        result.nodes = list(self.nodes)
+        result.edges = list(self.edges)
+        result.adjMat = [[j for j in i] for i in self.adjMat]
+        return result
 
     def random_generator(self, node_num, edge_num):
         self.nodes = list(range(node_num))
         i = edge_num
         self.edges = []
-        self.adjMat = [[0]*node_num for i in range(node_num)]
+        self.adjMat = [[0] * node_num for i in range(node_num)]
         while i > 0:
             p = random.choice(self.nodes)
             q = random.choice(self.nodes)
@@ -42,7 +42,7 @@ class NetworkGraph(object):
             self.nodes.remove(i)
             for j in range(len(self.nodes)):
                 self.adjMat[j][k] = self.adjMat[k][j] = 0
-            # TODO: check
+                # TODO: check
 
     def add_edges(self, edges):
         for i in edges:
@@ -97,24 +97,25 @@ class NetworkGraph(object):
 
     def check_reliability(self):
         k_edges = []
-        t_g = NetworkGraph(self)
-        result = False
+        t_g = copy(self)
+        result = True
         for x in self.edges:
             t_g.remove_edges([x])
             if not t_g.connective():
                 k_edges.append(x)
-                result = True
+                result = False
             t_g.add_edges([x])
         return result, k_edges
 
     def key_node(self):
         k_node = []
         for x in self.nodes:
-            t_g = NetworkGraph(self)
+            t_g = copy(self)
             t_g.remove_nodes([x])
             if not t_g.connective():
                 k_node.append(x)
         return k_node
+
 
 '''
 NG = NetworkGraph()
