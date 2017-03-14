@@ -1,0 +1,42 @@
+body {
+    margin: 0;
+}
+
+.sidebar {
+    position: absolute;
+    z-index: 1;
+    top: 10%;
+    left: 0;
+    height: 80%;
+    background: #2b542c;
+    max-width: 100px;
+}
+
+#container {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+.clear {
+    clear: both;
+}
+
+.sidebar label {
+    color: white;
+}
+
+.sidebar * {
+    width: 95%;
+}
+
+.line {
+    background: white;
+    height: 2px;
+    width: 100%;
+    margin: 5px 0 4px 0;
+}
+
+.download {
+    text-align:center;
+}

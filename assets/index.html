@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Basic sigma.js example</title>
+    <link href="/assets/style.css" rel="stylesheet">
+</head>
+<body>
+<div class="sidebar">
+    <label for="node_num">NodeNum:</label>
+    <div class="clear"></div>
+
+    <input id="node_num" value="20"/>
+    <div class="clear"></div>
+
+    <label for="edge_num">EdgeNum:</label>
+    <div class="clear"></div>
+
+    <input id="edge_num" value="50"/>
+    <div class="clear"></div>
+
+    <button id="generate">Generate</button>
+    <button id="refresh">Refresh</button>
+
+    <div class="line"></div>
+
+    <button id="redundancy">Redundancy</button>
+    <button id="reliability">Reliability</button>
+    <button id="key_node">KeyNode</button>
+
+    <a class="download" href="/download" download="save.json" >Download</a>
+</div>
+
+<div id="container"></div>
+<script src="/assets/jquery.min.js"></script>
+<script src="/assets/sigma.min.js"></script>
+<script src="/assets/sigma.parsers.json.min.js"></script>
+<script src="/assets/main.js"></script>
+
+</body>
+</html>
