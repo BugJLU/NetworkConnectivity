@@ -6,7 +6,7 @@ from copy import copy
 
 class NetworkGraph(object):
     def __init__(self, node_num=0):
-        self.nodes = list(range(node_num))
+        self.nodes = []  # list(range(node_num))
         self.edges = []
         self.adjMat = [[0] * node_num for i in range(node_num)]
 
@@ -127,13 +127,13 @@ class NetworkGraph(object):
                 k_node.append(x)
         return k_node
 
-
+'''
 ng = NetworkGraph()
 ng.random_generator(10, 20)
 ng.draw()
 ng.key_node()
 
-'''
+
 n = int(input())
 m = int(input())
 nodes = list(range(0, n))
