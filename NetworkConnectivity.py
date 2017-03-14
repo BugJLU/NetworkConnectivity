@@ -8,7 +8,7 @@ class NetworkGraph(object):
     def __init__(self, node_num=0):
         self.nodes = []  # list(range(node_num))
         self.edges = []
-        self.adjMat = [[0] * node_num for i in range(node_num)]
+        self.adjMat = [[0] * node_num for _ in range(node_num)]
 
     def __copy__(self):
         result = NetworkGraph()
