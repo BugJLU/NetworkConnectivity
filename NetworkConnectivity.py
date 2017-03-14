@@ -38,11 +38,11 @@ class NetworkGraph(object):
 
     def remove_nodes(self, nodes):
         for i in nodes:
-            k = self.nodes.index(i)
-            self.nodes.remove(i)
+            # k = self.nodes.index(i)
             for j in range(len(self.nodes)):
-                self.adjMat[j][k] = self.adjMat[k][j] = 0
+                self.adjMat[j][i] = self.adjMat[i][j] = 0
                 # TODO: check
+            self.nodes.remove(i)
 
     def add_edges(self, edges):
         for i in edges:
@@ -62,7 +62,7 @@ class NetworkGraph(object):
         g = nx.Graph()
         g.add_nodes_from(self.nodes)
         g.add_edges_from(self.edges)
-        nx.draw(g)
+        nx.draw(g, with_labels=True)
         plt.show()
 
     def connective(self):
@@ -70,7 +70,7 @@ class NetworkGraph(object):
         l = [x]
         i = 0
         while i < len(l):
-            for j in range(len(self.nodes)):
+            for j in range(len(self.adjMat)):
                 if (self.adjMat[l[i]][j] > 0) and (j not in l):
                     l.append(j)
             i += 1
@@ -78,11 +78,20 @@ class NetworkGraph(object):
             return True
         else:
             return False
-        pass
 
     def connective_between(self, node_a, node_b):
-        # TODO
-        pass
+        x = node_a
+        l = [x]
+        i = 0
+        while i < len(l):
+            for j in range(len(self.adjMat)):
+                if (self.adjMat[l[i]][j] > 0) and (j not in l):
+                    l.append(j)
+            i += 1
+        if node_b in l:
+            return True
+        else:
+            return False
 
     def check_redundancy(self):
         r_edges = []
@@ -111,19 +120,20 @@ class NetworkGraph(object):
         k_node = []
         for x in self.nodes:
             t_g = copy(self)
+            # t_g.draw()  # del
             t_g.remove_nodes([x])
+            # t_g.draw()  # del
             if not t_g.connective():
                 k_node.append(x)
         return k_node
 
 
+ng = NetworkGraph()
+ng.random_generator(10, 20)
+ng.draw()
+ng.key_node()
+
 '''
-NG = NetworkGraph()
-NG.random_generator(int(input()), int(input()))
-NG.draw()
-
-
-
 n = int(input())
 m = int(input())
 nodes = list(range(0, n))
