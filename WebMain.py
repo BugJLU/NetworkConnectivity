@@ -67,17 +67,18 @@ def redundancy():
 def reliability():
     global down_buf
     result = []
-    g, edges = graph.check_reliability()
+    _, edges = graph.check_reliability()
     for e in edges:
         result.append(graph.edges.index(e))
-    down_buf = tojson(g)
+    down_buf = {'reliability_edge': edges}
     return {'result': result}
 
 
 @bottle.route('/key_node')
 def key_node():
-    result = []
+    global down_buf
     nodes = graph.key_node()
+    down_buf = {'key_node': nodes}
     return {'result': nodes}
 
 

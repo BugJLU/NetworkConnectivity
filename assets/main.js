@@ -82,7 +82,7 @@ $(document).ready(function () {
             success: function (data) {
                 if (isArrayFn(data['result'])) {
                     data['result'].forEach(function (e) {
-                        s.graph.edges()[e].color = '#c79c9c';
+                        s.graph.edges()[e].color = '#000';
                     });
                     s.refresh();
                 } else {
@@ -98,7 +98,7 @@ $(document).ready(function () {
             success: function (data) {
                 if (isArrayFn(data['result'])) {
                     data['result'].forEach(function (e) {
-                        s.graph.nodes()[e].color = '#c79c9c';
+                        s.graph.nodes()[e].color = '#000';
                     });
                     s.refresh();
                 } else {
