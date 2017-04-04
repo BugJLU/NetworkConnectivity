@@ -19,21 +19,30 @@
     <div class="clear"></div>
 
     <button id="generate">Generate</button>
-    <button id="refresh">Refresh</button>
 
     <div class="line"></div>
 
+    <button id="refresh">Refresh</button>
     <button id="redundancy">Redundancy</button>
+
+    <div class="line"></div>
+
     <button id="reliability">Reliability</button>
     <button id="key_node">KeyNode</button>
 
-    <a class="download" href="/download" download="save.json" >Download</a>
+    <div class="line"></div>
+
+    <p>
+        <input id="ask_download" type="checkbox" style="width:auto"/>
+        <label for="ask_download" style="width:auto;font-size: 0.6em">AskForDown</label>
+    </p>
+
+
 </div>
 
 <div id="container"></div>
 <script src="/assets/jquery.min.js"></script>
 <script src="/assets/sigma.min.js"></script>
-<script src="/assets/sigma.parsers.json.min.js"></script>
 <script src="/assets/main.js"></script>
 
 </body>
